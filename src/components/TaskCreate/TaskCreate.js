@@ -5,9 +5,10 @@ export default class TaskCreate extends Component {
   state = {
     task: "",
   };
-  componentDidUpdate() {
-    console.log(">>> componentDidUpdate");
+  addHandeler() {
+    this.props.setTasksProps(this.state.task);
   }
+  componentDidUpdate() {}
   changeHandler = (event) => {
     this.setState(() => ({ task: event.target.value }));
   };
@@ -22,7 +23,10 @@ export default class TaskCreate extends Component {
             this.changeHandler(event);
           }}
         />
-        <button className="Task__button Task__button--blue Task__button--big">
+        <button
+          className="Task__button Task__button--blue Task__button--big"
+          onClick={() => this.props.setTasksProps(task)}
+        >
           Add
         </button>
       </div>
