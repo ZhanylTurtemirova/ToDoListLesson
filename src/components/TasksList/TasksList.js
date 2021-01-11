@@ -1,43 +1,28 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import TaskItem from "./TaskItem";
 
-export default class TasksList extends Component {
-  state = {
-    tasks: ["task 1", "task 2", "task 3"],
-    dataFromChild: "",
+const TasksList = ({ tasks, deleteItem }) => {
+  const [tasksProps, setTasks] = useState(tasks);
+
+  const deleteItemHandler = (id) => {
+    const newList = tasksProps.filter((item) => item.id !== id);
+    setTasks(newList);
+    deleteItem(id);
   };
+  return (
+    <>
+      {tasks.map((item, index) => (
+        <TaskItem
+          key={index}
+          task={item}
+          test={"test"}
+          abc={true}
+          getData={(data) => this.handleData(data)}
+          deleteItem={(id) => deleteItemHandler(id)}
+        />
+      ))}
+    </>
+  );
+};
 
-  componentDidMount() {
-    console.log(">>> componentDidMount");
-  }
-
-  componentWillUnmount() {
-    console.log(">>> componentWillUnmount");
-  }
-
-  componentDidUpdate() {
-    console.log(">>> componentDidUpdate");
-  }
-
-  handleData = (data) => {
-    console.log(">>>", data);
-    this.setState(() => ({ dataFromChild: data }));
-  };
-
-  render() {
-    const { tasks } = this.state;
-    return (
-      <>
-        {tasks.map((item, index) => (
-          <TaskItem
-            key={index}
-            task={item}
-            test={"test"}
-            abc={true}
-            getData={(data) => this.handleData(data)}
-          />
-        ))}
-      </>
-    );
-  }
-}
+export default TasksList;

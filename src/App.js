@@ -26,7 +26,6 @@ function App() {
       newTasks.splice(removeIndex, 1);
     }
     setTasks(newTasks);
-    console.log("????", tasks);
   };
 
   return (

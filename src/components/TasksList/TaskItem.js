@@ -5,9 +5,12 @@ export default class TaskItem extends Component {
   handleClick = () => {
     this.props.getData("someData");
   };
+  handleEdit = () => {
+    this.props.getData(this.props.task);
+  };
+
   render() {
-    const { task, test, abc } = this.props;
-    console.log(">>>", test, abc);
+    const { task, deleteItem } = this.props;
 
     return (
       <div className="TaskItem">
@@ -15,18 +18,18 @@ export default class TaskItem extends Component {
           <button className="TaskItem__button TaskItem__button--green">
             Done
           </button>
-          <span className="TaskItem__text">{task}</span>
+          <span className="TaskItem__text">{task.text}</span>
         </div>
         <div className="TaskItem__item TaskItem__item--right">
           <button
             className="TaskItem__button TaskItem__button--grey"
-            onClick={this.handleClick}
+            onClick={this.handleEdit}
           >
             Edit
           </button>
           <button
             className="TaskItem__button TaskItem__button--red TaskItem__button--last"
-            onClick={this.handleClick}
+            onClick={() => deleteItem(task.id)}
           >
             Delete
           </button>
