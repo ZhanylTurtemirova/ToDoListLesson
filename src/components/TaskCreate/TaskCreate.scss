@@ -1,0 +1,27 @@
+.Task {
+  &__input {
+    border: 1px var(--mainGrey) solid;
+    background-image: none;
+    background-color: transparent;
+    box-shadow: none;
+    padding: 10px 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+
+  &__button {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: var(--buttonColor);
+    font-size: 14px;
+    text-transform: uppercase;
+
+    &--blue {
+      background: var(--darkBlue);
+    }
+    &--big {
+      font-size: 16px;
+    }
+  }
+}

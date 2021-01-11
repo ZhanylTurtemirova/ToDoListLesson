@@ -1,5 +1,29 @@
-.App {
+:root {
+  --mainBlue: #74b9ff;
+  --darkBlue: #0984e3;
+  --mainGrey: #b2bec3;
+  --buttonColor: #fff;
+  --buttonGreen: #55efc4;
+  --buttonRed: #d63031;
+  --buttonGrey: #b2bec3;
+}
+
+body {
+  background-color: var(--mainBlue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Wrapper {
   text-align: center;
+  margin: 0 auto;
+  margin-top: 4rem;
+  background: white;
+  padding: 1.5rem;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .App-logo {

@@ -1,0 +1,39 @@
+.TaskItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--mainBlue);
+  &__item {
+    &--left {
+      padding-right: 10px;
+    }
+    &--right {
+      padding-left: 10px;
+    }
+  }
+  &__button {
+    border: none;
+    padding: 5px 10px;
+    margin-right: 5px;
+    border-radius: 5px;
+    color: var(--buttonColor);
+    font-size: 14px;
+    text-transform: uppercase;
+
+    &--green {
+      background-color: var(--buttonGreen);
+    }
+    &--red {
+      background-color: var(--buttonRed);
+    }
+    &--grey {
+      background-color: var(--buttonGrey);
+    }
+    &--last {
+      margin-right: 0;
+    }
+  }
+  &__span {
+    font-family: "Roboto", sans-serif;
+  }
+}
