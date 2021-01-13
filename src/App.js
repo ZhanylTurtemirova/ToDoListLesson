@@ -10,7 +10,6 @@ function App() {
     { id: 1, text: "test task2", done: false },
     { id: 2, text: "test task3", done: false },
   ]);
-
   const setTasksHandler = (item) => {
     setTasks([...tasks, { id: tasks.length, text: item }]);
   };
@@ -28,11 +27,28 @@ function App() {
     setTasks(newTasks);
   };
 
+  const updateHandler = (task) => {
+    const newTasks = tasks;
+    var editedIndex = tasks
+      .map((item) => {
+        return item.id;
+      })
+      .indexOf(task.id);
+    if (editedIndex > 0) {
+      newTasks.splice(editedIndex, 1, task);
+    }
+    setTasks(newTasks);
+  };
+
   return (
     <div className="Wrapper">
       <Header />
       <TaskCreate setTasksProps={(item) => setTasksHandler(item)} />
-      <TasksList tasks={tasks} deleteItem={(id) => deleteHandler(id)} />
+      <TasksList
+        tasks={tasks}
+        deleteItem={(id) => deleteHandler(id)}
+        updateItem={(task) => updateHandler(task)}
+      />
     </div>
   );
 }

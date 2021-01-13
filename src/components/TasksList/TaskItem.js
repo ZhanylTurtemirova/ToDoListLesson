@@ -2,11 +2,22 @@ import React, { Component } from "react";
 import "./TaskItem.scss";
 
 export default class TaskItem extends Component {
+  state = {
+    text: this.props.task.text,
+    readonly: true,
+    btnName: "Edit",
+  };
   handleClick = () => {
     this.props.getData("someData");
   };
+
   handleEdit = () => {
-    this.props.getData(this.props.task);
+    if (this.state.readonly === true) {
+      this.setState({ readonly: false, btnName: "Save" });
+    } else {
+      this.setState({ readonly: true, btnName: "Edit" });
+      this.props.editItem(this.props.task);
+    }
   };
 
   render() {
@@ -18,14 +29,24 @@ export default class TaskItem extends Component {
           <button className="TaskItem__button TaskItem__button--green">
             Done
           </button>
-          <span className="TaskItem__text">{task.text}</span>
+          <input
+            className="TaskItem__text"
+            type="text"
+            value={this.state.text}
+            readonly={this.state.readonly}
+            onChange={(e) => {
+              if (this.state.readonly === false)
+                this.setState({ text: e.target.value });
+            }}
+          />
+          {/* <span className="TaskItem__text">{task.text}</span> */}
         </div>
         <div className="TaskItem__item TaskItem__item--right">
           <button
             className="TaskItem__button TaskItem__button--grey"
             onClick={this.handleEdit}
           >
-            Edit
+            {this.state.btnName}
           </button>
           <button
             className="TaskItem__button TaskItem__button--red TaskItem__button--last"
