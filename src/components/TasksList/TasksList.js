@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TaskItem from "./TaskItem";
 
-const TasksList = ({ tasks, deleteItem, updateItem }) => {
+const TasksList = ({ tasks, deleteItem, updateItem, setDone }) => {
   const [tasksProps, setTasks] = useState(tasks);
 
   const deleteItemHandler = (id) => {
@@ -12,6 +12,9 @@ const TasksList = ({ tasks, deleteItem, updateItem }) => {
   const editItemHandler = (task) => {
     updateItem(task);
   };
+  const setDoneHandler = (task) => {
+    setDone(task);
+  };
   return (
     <>
       {tasks.map((item, index) => (
@@ -20,6 +23,7 @@ const TasksList = ({ tasks, deleteItem, updateItem }) => {
           task={item}
           deleteItem={(id) => deleteItemHandler(id)}
           editItem={(task) => editItemHandler(task)}
+          setDone={(item) => setDoneHandler(item)}
         />
       ))}
     </>

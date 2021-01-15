@@ -12,6 +12,7 @@
     }
   }
   &__button {
+    cursor: pointer;
     border: none;
     padding: 5px 10px;
     margin-right: 5px;
@@ -35,5 +36,10 @@
   }
   &__span {
     font-family: "Roboto", sans-serif;
+  }
+  &__text {
+    &--done {
+      text-decoration: line-through;
+    }
   }
 }

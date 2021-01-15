@@ -48,6 +48,7 @@ function App() {
         tasks={tasks}
         deleteItem={(id) => deleteHandler(id)}
         updateItem={(task) => updateHandler(task)}
+        setDone={(task) => updateHandler(task)}
       />
     </div>
   );
